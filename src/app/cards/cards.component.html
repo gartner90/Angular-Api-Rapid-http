@@ -1,3 +1,45 @@
-<div class="container responsive-grid">
-    <app-card *ngFor="let item of items" [item]="item"></app-card>
+<div>
+    <button mat-raised-button color="accent" class="btn-new" (click)="showForm= true"  *ngIf="!showForm">NUEVO</button>
+    <form [formGroup]="form" (ngSubmit)="submitForm()" *ngIf="showForm">
+        <h2>{{currentItem.ind == null ? 'Nuevo' : 'Editar'}} plato mexicano</h2>
+        <mat-form-field>
+            <mat-label>Titulo</mat-label>
+            <input matInput formControlName="titulo">
+            <mat-error *ngIf="form?.get('titulo')?.invalid && form?.get('titulo')?.touched">El titulo es
+                obligatorio</mat-error>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <mat-label>Url Imagen</mat-label>
+            <input matInput formControlName="imagen">
+            <mat-error *ngIf="form?.get('imagen')?.invalid && form?.get('imagen')?.touched">La imagen es obligatoria</mat-error>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <mat-label>Dificultad</mat-label>
+            <mat-select formControlName="dificultad">
+                <mat-option value="Easy">Fácil</mat-option>
+                <mat-option value="Medium">Normal</mat-option>
+                <mat-option value="Hard">Dificil</mat-option>
+            </mat-select>
+            <mat-error *ngIf="form?.get('dificultad')?.invalid && form?.get('dificultad')?.touched">Seleccione una dificultad</mat-error>
+        </mat-form-field>
+        <br>
+        <button mat-raised-button color="primary" class="btn-form" type="submit">ENVIAR</button>
+        <button mat-raised-button color="basic" class="btn-form" (click)="cancel()">CANCELAR</button>
+    </form>
+    <div class="container responsive-grid">
+        <div class="card-item" *ngFor="let item of items; let ind = index">
+            <app-card  [item]="item">
+            </app-card>
+            <div class="card-actions">
+                <button mat-mini-fab color="accent" (click)="edit(item, ind)">
+                    <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-mini-fab color="warn" (click)="delete(ind)">
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </div>
+        </div>
+    </div>
 </div>
