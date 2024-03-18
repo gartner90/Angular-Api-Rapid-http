@@ -1,0 +1,22 @@
+mat-card-header.mat-mdc-card-header {
+    position: absolute;
+    top: 0;
+    z-index: 9;
+    color: white;
+    background-color: #0000006b;
+    width: calc(100% - 37px);
+    padding-bottom: 17px;
+    border-left: solid 5px #69f0ae;
+}
+
+mat-card-title.mat-mdc-card-title {
+    line-height: 21px;
+    margin-bottom: 5px;
+    text-shadow: 3px 2px 5px black;
+}
+
+mat-card-actions.mat-mdc-card-actions.mdc-card__actions {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+}

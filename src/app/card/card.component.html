@@ -1,1 +1,11 @@
-<p>card works!</p>
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>{{item.title}}</mat-card-title>
+        <mat-card-subtitle>Dificultad: <b>{{item.difficulty}}</b></mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image [src]="item.image" [alt]="item.title">
+    <mat-card-actions>
+        <button mat-raised-button color="accent">VER RECETA</button>
+    </mat-card-actions>
+  </mat-card>
